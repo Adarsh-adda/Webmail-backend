@@ -29,7 +29,10 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS=['*'] # type: ignore
+CSRF_TRUSTED_ORIGINS = ['https://task.techcart.live','https://webmail-backend-production.up.railway.app','https://*.127.0.0.1','http://127.0.0.1:5173']
 
+CORS_ORIGIN_ALLOW_ALL=True
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -134,7 +137,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+
 
 
