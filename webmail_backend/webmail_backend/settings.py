@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY') # config('SECRET_KEY') 
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG') # config('DEBUG')
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS=['*'] # type: ignore
 CSRF_TRUSTED_ORIGINS = ['https://mytask.techcart.live','https://webmail-backend-production.up.railway.app','https://*.127.0.0.1','http://127.0.0.1:5173']
@@ -90,9 +90,8 @@ WSGI_APPLICATION = 'webmail_backend.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASE_URL = os.getenv('DATABASE_URL')
 DATABASES = {
-    "default": dj_database_url.config() # type: ignore  config('DATABASE_URL')
+    "default": dj_database_url.parse(config('DATABASE_URL')) # type: ignore
 }
 
 # Password validation
