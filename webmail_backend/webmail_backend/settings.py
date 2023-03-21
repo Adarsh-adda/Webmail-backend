@@ -90,8 +90,9 @@ WSGI_APPLICATION = 'webmail_backend.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+DATABASE_URL = os.getenv('DATABASE_URL')
 DATABASES = {
-    "default": dj_database_url.parse(os.environ.get('DATABASE_URL')) # type: ignore  config('DATABASE_URL')
+    "default": dj_database_url.config() # type: ignore  config('DATABASE_URL')
 }
 
 # Password validation
